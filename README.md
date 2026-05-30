@@ -1,59 +1,54 @@
-# EcommerceClientM
+# E-Commerce Microservices Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+A modern Angular-based frontend application developed for a Microservices E-Commerce platform. The application provides an interactive user experience for product browsing, cart management, user authentication, and order processing through backend microservices.
 
-## Development server
+## 🚀 Technologies Used
 
-To start a local development server, run:
+* Angular
+* TypeScript
+* HTML5
+* CSS3
+* Bootstrap
+* REST API Integration
 
-```bash
-ng serve
-```
+## ✨ Key Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* User Registration & Login
+* Product Listing
+* Product Search & Filtering
+* Shopping Cart Management
+* Order Placement
+* Responsive User Interface
+* Integration with Spring Boot Microservices
+* API Gateway Communication
 
-## Code scaffolding
+## 🏗️ Architecture
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The frontend communicates with backend microservices through an API Gateway, enabling seamless interaction with:
 
-```bash
-ng generate component component-name
-```
+* User Service
+* Product Service
+* Cart Service
+* Order Service
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📂 Project Modules
 
-```bash
-ng generate --help
-```
+* Authentication Module
+* Product Module
+* Cart Module
+* Order Module
+* Shared Components
 
-## Building
+## 🎯 Purpose
 
-To build the project run:
+This project demonstrates modern frontend development practices using Angular while integrating with a Spring Boot Microservices architecture.
 
-```bash
-ng build
-```
+## 🌐 Backend Repository
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Integrated with the E-Commerce Microservices Backend project.
 
-## Running unit tests
+## 👨‍💻 Developer
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Elango
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Java Full Stack Developer
