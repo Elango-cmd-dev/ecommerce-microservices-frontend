@@ -1,0 +1,74 @@
+<header class="top-nav">
+  <div class="nav-left">
+    <div class="logo" routerLink="/products">
+      ElanStore
+    </div>
+
+    <div 
+  class="location account-menu"
+  (click)="toggleAccountMenu($event)"
+>
+  <span class="hello">
+    Hello, {{ (userName$ | async) || 'sign in' }}
+  </span>
+  <span class="location-line">
+    {{ (userName$ | async) ? 'Select your address' : 'Account & Lists' }}
+  </span>
+
+  <!-- Dropdown -->
+  <div class="account-dropdown" *ngIf="showAccountMenu">
+    <div class="account-dropdown-content" (click)="$event.stopPropagation()">
+
+      <ng-container *ngIf="!(userName$ | async); else loggedInBlock">
+        <button class="account-btn" (click)="onGoToLogin()">
+          Sign In
+        </button>
+      </ng-container>
+
+      <ng-template #loggedInBlock>
+        <div class="account-greeting">
+          Signed in as <strong>{{ userName$ | async }}</strong>
+        </div>
+        <button class="account-btn" (click)="onLogout()">
+          Sign Out
+        </button>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="nav-center">
+    <div class="search-bar">
+      <input type="text" placeholder="Search electronics, laptops, phones..." />
+      <button>Search</button>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <div class="nav-item" routerLink="/products">
+      <span class="line1">Browse</span>
+      <span class="line2">Products</span>
+    </div>
+
+    <div class="nav-item" routerLink="/orders">
+      <span class="line1">Returns</span>
+      <span class="line2">& Orders</span>
+    </div>
+
+    <div class="nav-item cart" routerLink="/cart">
+      <span class="cart-icon">🛒</span>
+      <span class="line2">Cart</span>
+    </div>
+  </div>
+</header>
+
+<nav class="sub-nav">
+  <a routerLink="/products" routerLinkActive="active">All Products</a>
+  <a routerLink="/orders" routerLinkActive="active">My Orders</a>
+  <a href="javascript:void(0)">Deals</a>
+  <a href="javascript:void(0)">Electronics</a>
+</nav>

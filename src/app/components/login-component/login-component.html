@@ -1,0 +1,59 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1>Sign in</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="userEmailId">Email</label>
+        <input
+          id="userEmailId"
+          type="email"
+          formControlName="userEmailId"
+        />
+        <div class="error-text" *ngIf="f['userEmailId'].touched && f['userEmailId'].invalid">
+          Enter a valid email address
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="userPassword">Password</label>
+        <input
+          id="userPassword"
+          type="password"
+          formControlName="userPassword"
+        />
+        <div class="error-text" *ngIf="f['userPassword'].touched && f['userPassword'].invalid">
+          Password is required
+        </div>
+      </div>
+
+      <!-- Sign in button -->
+      <button
+        class="primary-btn"
+        type="submit"
+        [disabled]="loginForm.invalid || loading"
+      >
+        {{ loading ? 'Signing in...' : 'Sign in' }}
+      </button>
+
+      <!-- Messages -->
+      <div class="status-text success" *ngIf="message">
+        {{ message }}
+      </div>
+      <div class="status-text error" *ngIf="error">
+        {{ error }}
+      </div>
+    </form>
+
+    <div class="new-to-amazon">
+      <span>New to Amazon?</span>
+    </div>
+
+    <button class="secondary-btn" type="button" (click)="navigateToRegister()">
+      Create your Amazon account
+    </button>
+  </div>
+</div>

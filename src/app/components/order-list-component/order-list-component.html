@@ -1,0 +1,46 @@
+<div class="orders-page">
+  <div class="orders-card">
+    <h2>My orders</h2>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="info">
+      Loading orders...
+    </div>
+
+    <!-- Content -->
+    <ng-container *ngIf="!loading">
+
+      <!-- Error -->
+      <div *ngIf="error" class="info error">
+        {{ error }}
+      </div>
+
+      <!-- No orders -->
+      <div *ngIf="!error && orders.length === 0" class="info">
+        You have no orders yet.
+      </div>
+
+      <!-- Orders table -->
+      <div *ngIf="!error && orders.length > 0" class="order-list">
+        <div class="order-row header">
+          <span>Order ID</span>
+          <span>Product ID</span>
+          <span>Product</span>
+          <span>Quantity</span>
+          <span>Unit Price</span>
+          <span>Total</span>
+        </div>
+
+        <div class="order-row" *ngFor="let o of orders">
+          <span>#{{ o.orderId }}</span>
+          <span>{{ o.productId }}</span>
+          <span>{{ o.productName }}</span>
+          <span>{{ o.quantity }}</span>
+          <span>₹{{ o.productPrice }}</span>
+          <span>₹{{ o.totalPrice }}</span>
+        </div>
+      </div>
+
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="detail-page">
+
+  <!-- Loading state -->
+  <div *ngIf="loading" class="state-message">
+    Loading product details...
+  </div>
+
+  <!-- Content & error state -->
+  <ng-container *ngIf="!loading">
+
+    <!-- Error -->
+    <div *ngIf="error" class="state-message error">
+      <div>{{ error }}</div>
+      <button class="secondary-btn" (click)="goBack()">Back to products</button>
+    </div>
+
+    <!-- Product detail -->
+    <div *ngIf="!error && product" class="detail-container">
+      <!-- LEFT: IMAGE PANEL -->
+      <div class="image-panel">
+        <ng-container *ngIf="imageSrc; else placeholder">
+          <img [src]="imageSrc" [alt]="product.productName" class="product-image" />
+        </ng-container>
+
+        <ng-template #placeholder>
+          <div class="image-placeholder">
+            {{ product.productName ? product.productName[0] : '?' }}
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- RIGHT: INFO PANEL -->
+      <div class="info-panel">
+        <h2 class="title">{{ product.productName }}</h2>
+
+        <p class="price">
+          ₹{{ product.productPrice | number : '1.0-0' }}
+        </p>
+
+        <p class="desc">
+          {{ product.productDescription }}
+        </p>
+
+        <div class="actions">
+          <!-- Buy now: navigate to order-create page -->
+          <button
+            class="primary-btn"
+            [routerLink]="['/orders','create']"
+            [queryParams]="{ productId: product.productId }">
+            Buy now
+          </button>
+
+          <!-- Add to cart: calls cart-service -->
+          <button
+            class="add-to-cart-btn"
+            [disabled]="addingToCart"
+            (click)="addToCart()">
+            {{ addingToCart ? 'Adding...' : 'Add to Cart' }}
+          </button>
+
+          <!-- Back to product list -->
+          <button class="secondary-btn" (click)="goBack()">
+            Back to products
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+</div>

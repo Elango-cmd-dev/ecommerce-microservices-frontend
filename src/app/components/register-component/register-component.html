@@ -1,0 +1,87 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <h1>Create account</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="userName">Your name</label>
+        <input
+          id="userName"
+          type="text"
+          formControlName="userName"
+        />
+        <div class="error-text" *ngIf="f['userName'].touched && f['userName'].invalid">
+          Name is required
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="userEmailId">Email</label>
+        <input
+          id="userEmailId"
+          type="email"
+          formControlName="userEmailId"
+        />
+        <div class="error-text" *ngIf="f['userEmailId'].touched && f['userEmailId'].invalid">
+          Enter a valid email address
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="userPassword">Password</label>
+        <input
+          id="userPassword"
+          type="password"
+          formControlName="userPassword"
+          placeholder="At least 6 characters"
+        />
+        <div class="hint-text">Passwords must be at least 6 characters.</div>
+        <div class="error-text" *ngIf="f['userPassword'].touched && f['userPassword'].invalid">
+          Password must be at least 6 characters
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="userPhoneNumber">Mobile number</label>
+        <input
+          id="userPhoneNumber"
+          type="text"
+          formControlName="userPhoneNumber"
+          placeholder="10-digit mobile number"
+        />
+        <div class="error-text" *ngIf="f['userPhoneNumber'].touched && f['userPhoneNumber'].invalid">
+          Enter a valid 10-digit mobile number
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button
+        class="primary-btn"
+        type="submit"
+        [disabled]="registerForm.invalid || loading"
+      >
+        {{ loading ? 'Creating your account...' : 'Create your Amazon account' }}
+      </button>
+
+      <!-- Messages -->
+      <div class="status-text success" *ngIf="message">
+        {{ message }}
+      </div>
+      <div class="status-text error" *ngIf="error">
+        {{ error }}
+      </div>
+    </form>
+
+    <hr class="divider" />
+
+    <div class="switch-text">
+      Already have an account?
+      <span class="link" (click)="navigateToLogin()">Sign in</span>
+    </div>
+  </div>
+</div>

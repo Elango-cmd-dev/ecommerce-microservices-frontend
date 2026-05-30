@@ -1,0 +1,223 @@
+$nav-bg: #131921;
+$nav-sub-bg: #232f3e;
+$accent: #febd69;
+$accent-hover: #f3a847;
+$text-light: #f3f3f3;
+
+.top-nav {
+  background-color: $nav-bg;
+  color: $text-light;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) minmax(0, 2fr);
+  align-items: center;
+  padding: 6px 18px;
+  gap: 12px;
+  column-gap: 20px;
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 3px;
+
+      &:hover {
+        outline: 1px solid $text-light;
+      }
+    }
+
+    // Account / Hello / address block (with dropdown)
+    .location {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8rem;
+      line-height: 1.1;
+      position: relative;    // for dropdown positioning
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 3px;
+
+      .hello {
+        color: #ccc;
+      }
+
+      .location-line {
+        font-weight: 600;
+      }
+
+      &:hover {
+        outline: 1px solid $text-light;
+      }
+
+      // Dropdown container
+      .account-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 4px;
+        z-index: 1000;
+      }
+
+      // Dropdown content box
+      .account-dropdown-content {
+        background-color: #ffffff;
+        color: #111;
+        border-radius: 4px;
+        padding: 12px 14px;
+        min-width: 220px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+        box-sizing: border-box;
+      }
+
+      .account-greeting {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+      }
+
+      .account-btn {
+        width: 100%;
+        padding: 6px 10px;
+        border-radius: 3px;
+        border: 1px solid $accent;
+        background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+
+        &:hover {
+          background-color: $accent-hover;
+        }
+      }
+    }
+  }
+
+  .nav-center {
+    .search-bar {
+      display: flex;
+      max-width: 640px;
+      margin: 0 auto;
+
+      input {
+        flex: 1;
+        padding: 8px 10px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-size: 0.9rem;
+        outline: none;
+      }
+
+      button {
+        border: none;
+        padding: 0 14px;
+        background-color: $accent;
+        font-weight: 600;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: $accent-hover;
+        }
+      }
+    }
+  }
+
+  .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    font-size: 0.85rem;
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 3px;
+
+      .line1 {
+        color: #ccc;
+      }
+
+      .line2 {
+        font-weight: 700;
+      }
+
+      &:hover {
+        outline: 1px solid $text-light;
+      }
+
+      &.cart {
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+
+        .cart-icon {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}
+
+.sub-nav {
+  background-color: $nav-sub-bg;
+  color: $text-light;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 6px 18px;
+  gap: 10px;
+  font-size: 0.85rem;
+
+  a {
+    color: $text-light;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      border: 1px solid $accent;
+    }
+  }
+}
+
+/* Basic responsiveness */
+@media (max-width: 900px) {
+  .top-nav {
+    grid-template-columns: 1.8fr 3fr;
+    grid-template-rows: auto auto;
+
+    .nav-right {
+      grid-column: 1 / -1;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .top-nav {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+
+    .nav-center {
+      order: 3;
+    }
+  }
+
+  .sub-nav {
+    font-size: 0.8rem;
+  }
+}

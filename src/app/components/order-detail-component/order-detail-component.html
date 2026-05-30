@@ -1,0 +1,55 @@
+<div class="order-page">
+
+  <!-- 1) Product loading state -->
+  <div *ngIf="loadingProduct" class="order-card">
+    <p>Loading product information...</p>
+  </div>
+
+  <!-- 2) Error state (after loading) -->
+  <div *ngIf="!loadingProduct && error" class="order-card">
+    <p class="error-text">{{ error }}</p>
+  </div>
+
+  <!-- 3) Main content: product loaded and no error -->
+  <div *ngIf="!loadingProduct && !error && product" class="order-card">
+    <div class="header">
+      <h2>Review your order</h2>
+    </div>
+
+    <div class="order-body">
+      <div class="product-summary">
+        <h3>{{ product.productName }}</h3>
+        <p class="price">Price: ₹{{ product.productPrice }}</p>
+        <p class="desc">{{ product.productDescription }}</p>
+      </div>
+
+      <div class="order-controls">
+        <label>
+          Quantity
+          <input type="number" [(ngModel)]="quantity" min="1" />
+        </label>
+
+        <div class="total">
+          Order total:
+          <span>₹{{ totalPrice | number: '1.0-0' }}</span>
+        </div>
+
+        <button
+          class="buy-btn"
+          (click)="placeOrder()"
+          [disabled]="placing || quantity < 1"
+        >
+          {{ placing ? 'Placing order…' : 'Place your order' }}
+        </button>
+
+        <div *ngIf="success" class="success-box">
+          Order placed! Order ID: {{ success.orderId }}
+        </div>
+
+        <div *ngIf="!success && error" class="error-box">
+          {{ error }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
